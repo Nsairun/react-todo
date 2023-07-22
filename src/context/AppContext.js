@@ -1,15 +1,5 @@
-const { createContext, useContext, useState } = require('react');
+import { createContext } from 'react';
 
-const AppContext = createContext({});
+const QuestionContext = createContext();
 
-export function AppContextProvider({ children }) {
-  const [data, setData] = useState(null);
-
-  return (
-    <AppContext.AppContextProvider value={{ data, setData }}>
-      {children}
-    </AppContext.AppContextProvider>
-  );
-}
-
-export const useAppContext = () => useContext(AppContext);
+export default QuestionContext;
