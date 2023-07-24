@@ -15,6 +15,13 @@ function ToDo() {
     setAddTodo('');
   };
 
+  function DeleteTodo(text) {
+    const newTodo = todoList.filter((todo) => {
+      return todo !== text;
+    });
+    setTodoList(newTodo);
+  }
+
   return (
     <div>
       <div className="todo-container">
@@ -33,6 +40,14 @@ function ToDo() {
                 {todoList?.map((todo) => (
                   <div className="todo">
                     <li>{todo}</li>
+                    <div className="listeners">
+                      <button type="button" onClick={() => DeleteTodo(todo)}>
+                        <FcDeleteRow />
+                      </button>
+                      <button type="button">
+                        <FcApproval />
+                      </button>
+                    </div>
                   </div>
                 ))}
               </ul>
@@ -44,12 +59,6 @@ function ToDo() {
             <div className="listeners">
               <button type="button" onClick={addItem}>
                 <FcPlus />
-              </button>
-              <button type="button">
-                <FcDeleteRow />
-              </button>
-              <button type="button">
-                <FcApproval />
               </button>
             </div>
           </div>
